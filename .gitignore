@@ -1,0 +1,86 @@
+----------------------------------------------------------------------
+
+1. DEPENDÊNCIAS
+
+----------------------------------------------------------------------
+
+Dependências do Node (localizadas na raiz e/ou nos sub-workspaces)
+
+node_modules
+**/node_modules
+.npm
+.yarn-integrity
+
+----------------------------------------------------------------------
+
+2. ARTEFATOS DE BUILD/COMPILAÇÃO
+
+----------------------------------------------------------------------
+
+TypeScript
+
+*.tsbuildinfo
+
+Artefatos de compilação do NestJS/TypeScript (Backend)
+
+Normalmente são gerados na pasta "dist"
+
+/backend/dist
+/backend/coverage
+
+Artefatos de compilação do Next.js (Frontend)
+
+Next.js usa a pasta ".next" para o build
+
+/frontend/.next
+/frontend/out
+/frontend/build
+/frontend/coverage
+
+----------------------------------------------------------------------
+
+3. ARQUIVOS DE AMBIENTE E DADOS SENSÍVEIS
+
+----------------------------------------------------------------------
+
+O .env.example DEVE ser versionado, mas o .env (com as credenciais reais) NÃO.
+
+.env
+.env.local
+.env.*.local
+.DS_Store
+
+Chaves de acesso ou arquivos de configuração secretos
+
+*.key
+*.pem
+
+----------------------------------------------------------------------
+
+4. FERRAMENTAS E EDITOR/IDE
+
+----------------------------------------------------------------------
+
+Git
+
+Arquivos de rastreamento de grandes arquivos (se você usar LFS)
+
+.git/
+.gitattributes
+.gitmodules
+
+IDEs / Editores
+
+.vscode
+.idea
+.sublime-
+
+----------------------------------------------------------------------
+
+5. DOCKER
+
+----------------------------------------------------------------------
+
+Arquivos gerados durante o Docker Compose
+
+.docker

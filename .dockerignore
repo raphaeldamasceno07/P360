@@ -1,0 +1,39 @@
+Ignora todas as pastas de dependências
+
+node_modules
+**/node_modules
+
+Ignora metadados e arquivos de sistema
+
+.git
+.gitignore
+.DS_Store
+.vscode
+.idea
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+Ignora artefatos de build que serão criados DENTRO do container
+
+O NestJS e React geram estes arquivos
+
+dist
+build
+coverage
+
+Ignora arquivos de ambiente local (devem ser passados como ARG/ENV)
+
+.env
+.env.local
+.env.*
+
+Opcional: Ignorar a pasta do serviço "irmão"
+
+No seu caso, o context já restringe isso, mas é uma boa prática
+
+se você não precisar dos arquivos irmãos para a compilação.
+
+Ex: ao compilar o backend, não precisamos dos arquivos do frontend.
+
+frontend/
