@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: backend-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: p360_catalogo
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: 26032020
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
+    name: backend-postgres-data
