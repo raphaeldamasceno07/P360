@@ -1,0 +1,34 @@
+### Login
+POST http://localhost:4080/auth/login
+Content-Type: application/json
+
+{
+    "email": "rdamasceno1852@gmail.com",
+    "password": "260320200Red@"
+}
+
+### token
+@tokenAdmin = {{ adminLogin.response.body.access_token }}
+
+## Get All Users
+GET http://localhost:4080/users/all
+Content-Type: application/json
+Authorization: Bearer {{tokenAdmin}}
+
+
+## Create Admin
+POST http://localhost:4080/users/signup
+
+{
+    "name": "Raphael",
+    "email": "rdamasceno1852@gmail.com",
+    "password": "260320200Red@",
+    "role": 1
+}
+
+
+
+
+
+
+
