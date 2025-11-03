@@ -2,10 +2,11 @@ import { Module } from '@nestjs/common';
 import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
-    // Se você usa arquivos .env, certifique-se de que o caminho está correto
     ConfigModule.forRoot({
       envFilePath: ['.env.development.local', '.env.development'],
       isGlobal: true,
@@ -20,9 +21,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       autoLoadEntities: true,
       synchronize: false,
     }),
+    AuthModule,
     UserModule,
   ],
   controllers: [],
-  providers: [],
+  // providers: [
+  //   {
+  //     provide: APP_GUARD,
+  //     // useClass: RolesGuard,
+  //   },
+  // ],
 })
 export class AppModule {}

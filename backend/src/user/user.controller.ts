@@ -1,21 +1,26 @@
-import {
-  Controller,
-  Post,
-  Body,
-  UsePipes,
-  ValidationPipe,
-} from '@nestjs/common';
+import { Controller, Post, Body, Get, Query, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { ReturnUserDto } from './dto/return-user.dto';
+import { AuthGuard } from '@nestjs/passport';
 
-@Controller('user')
+@UseGuards(AuthGuard('jwt'))
+@Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @UsePipes(ValidationPipe)
   @Post('/signup')
-  createUser(@Body() createUserDto: CreateUserDto): Promise<ReturnUserDto> {
+  async createUser(@Body() createUserDto: CreateUserDto): Promise<ReturnUserDto> {
     return this.userService.createUser(createUserDto);
+  }
+
+  @Get('/all')
+  async getAllUser(): Promise<ReturnUserDto[]> {
+    return (await this.userService.getAllUser()).map((userEntity) => new ReturnUserDto(userEntity));
+  }
+
+  @Get('/by-email')
+  async findUserByEmail(@Query('email') email: string): Promise<ReturnUserDto> {
+    return this.userService.findUserByEmail(email);
   }
 }
